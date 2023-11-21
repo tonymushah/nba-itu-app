@@ -1,10 +1,11 @@
-import { Slot } from 'expo-router';
-import * as React from 'react';
-import { GluestackUIProvider, Text, Box } from "@gluestack-ui/themed";
+import { config } from "@gluestack-ui/config";
+import { GluestackUIProvider } from "@gluestack-ui/themed";
+import { Slot } from "expo-router";
+import * as React from "react";
 
 export default function Main() {
   return (
-    <GluestackUIProvider>
+    <GluestackUIProvider config={config}>
       <Slot />
     </GluestackUIProvider>
   );
