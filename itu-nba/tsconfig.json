@@ -5,8 +5,9 @@
     "paths": {
       "@root/*" : ["./*"],
       "@src/*" : ["./src/*"],
-      "@hooks/*": ["./src/hooks"],
-      "@app/*" : ["./src/app/*"]
+      "@hooks/*": ["./src/hooks/*"],
+      "@app/*" : ["./src/app/*"],
+      "@componnents/*" : ["./src/componnents/*"]
     }
   },
 }

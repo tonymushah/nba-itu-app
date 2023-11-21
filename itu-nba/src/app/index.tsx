@@ -1,5 +1,7 @@
+import SignalCounter from "@componnents/SignalCounter";
 import { Text, View } from "@gluestack-ui/themed";
 import { StatusBar } from "expo-status-bar";
+import InsertFrom from "@componnents/joueur/InsertForm";
 
 export default function App() {
   return (
@@ -9,7 +11,7 @@ export default function App() {
       alignItems="center"
       justifyContent="center"
     >
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <InsertFrom />
       <StatusBar style="auto" />
     </View>
   );
