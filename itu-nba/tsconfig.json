@@ -4,7 +4,9 @@
     "strict": true,
     "paths": {
       "@root/*" : ["./*"],
-      "@app/*" : ["./app/*"]
+      "@src/*" : ["./src/*"],
+      "@hooks/*": ["./src/hooks"],
+      "@app/*" : ["./src/app/*"]
     }
   },
 }
