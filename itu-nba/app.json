@@ -1,9 +1,9 @@
 {
-  "scheme": "itu-nba",
   "expo": {
     "name": "itu-nba",
     "slug": "itu-nba",
     "version": "1.0.0",
+    "scheme": "itu-nba",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
