@@ -1,36 +1,32 @@
 import { Signal, useSignal } from '@preact/signals-react';
-import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import { Platform } from 'react-native';
-import { Pressable, Icon, Input, InputField, InputSlot, onChange } from '@gluestack-ui/themed';
-import FeatherIcon from 'react-native-vector-icons/Feather';
-import React from 'react';
-
-function CalendarIcon() {
-  return (
-    <FeatherIcon name='calendar' />
-  )
-}
+import { Pressable, Icon, Input, InputField, InputSlot } from '@gluestack-ui/themed';
+import React, { useState, useTransition } from 'react';
+import { CalendarIcon } from 'lucide-react-native';
 
 function DefaultDatePicker({ onChange, date = new Date(), show }: {
   onChange: ((date: Date) => void),
   date?: Date,
-  show: boolean | Signal<boolean>
+  show: boolean
 }) {
-  return (
-    <React.Fragment>
-      {show && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={date}
-          mode={"date"}
-          is24Hour={true}
-          onChange={(_, date) => {
-            if (date) onChange(date);
-          }}
-        />
-      )}
-    </React.Fragment>
-  );
+  if (show) {
+    return (
+      <DateTimePicker
+        testID="dateTimePicker"
+        value={date}
+        mode={"date"}
+        is24Hour={true}
+        onChange={(_, date) => {
+          if (date) onChange(date);
+        }}
+      />
+    );
+  } else {
+    return (
+      <React.Fragment />
+    );
+  }
 };
 
 function WebDatePicker({ onChange, date, placeholder }: {
@@ -53,26 +49,28 @@ function NotWebDatePicker({ onChange, placeholder, startDate }: {
   onChange: ((date: Date) => void),
   startDate?: Date
 }) {
-  const date = useSignal(new Date());
-  const show = useSignal(false);
+  const [date, setDate] = useState(new Date());
+  const [show, setShow] = useState(false);
   return (
     <React.Fragment>
       <Pressable onPress={() => {
-        show.value = !(show.value);
+        setShow(true);
       }}>
         <Input isReadOnly>
-          <InputField type='text' placeholder={placeholder} />
+          <InputField type='text' placeholder={placeholder} value={date.toDateString()} />
           <InputSlot>
             <Icon as={CalendarIcon} />
           </InputSlot>
         </Input>
       </Pressable>
-      <DefaultDatePicker onChange={(_date) => {
-        if (_date) {
-          date.value = _date;
-          onChange(_date);
-        }
-      }}
+      <DefaultDatePicker
+        onChange={(_date) => {
+          if (_date) {
+            setShow(false);
+            setDate(_date);
+            onChange(_date);
+          }
+        }}
         date={startDate}
         show={show}
       />

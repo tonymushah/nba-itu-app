@@ -1,4 +1,19 @@
-import { ChevronDownIcon, FormControl, FormControlError, FormControlErrorIcon, FormControlErrorText, FormControlHelper, FormControlHelperText, FormControlLabel, FormControlLabelText, Icon, Input, InputField, Select, SelectBackdrop, SelectContent, SelectDragIndicator, SelectDragIndicatorWrapper, SelectIcon, SelectInput, SelectItem, SelectPortal, SelectTrigger } from "@gluestack-ui/themed";
+import { ChevronDownIcon as GlueStackChevronDownIcon, FormControl, FormControlError, FormControlErrorIcon, FormControlErrorText, FormControlHelper, FormControlHelperText, FormControlLabel, FormControlLabelText, Icon, Input, InputField, Select, SelectBackdrop, SelectContent, SelectDragIndicator, SelectDragIndicatorWrapper, SelectIcon, SelectInput, SelectItem, SelectPortal, SelectTrigger } from "@gluestack-ui/themed";
+import FeatherIcons from "@expo/vector-icons/Feather";
+import { Platform } from "react-native";
+
+function ChevronDownIcon() {
+    if (Platform.OS !== "web") {
+        return (
+            <FeatherIcons name={"chevron-down"} />
+        )
+    } else {
+        return (
+            <GlueStackChevronDownIcon />
+        );
+    }
+
+}
 
 function GenreSelect() {
     return (

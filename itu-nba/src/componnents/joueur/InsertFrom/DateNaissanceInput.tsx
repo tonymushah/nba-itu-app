@@ -1,10 +1,11 @@
 import { FormControl, FormControlError, FormControlErrorIcon, FormControlErrorText, FormControlHelper, FormControlHelperText, FormControlLabel, FormControlLabelText, Input, InputField } from "@gluestack-ui/themed";
-import { Platform } from "react-native";
 import DatePicker from "../../DatePicker";
 import { useSignal } from "@preact/signals-react";
+import React from "react";
 
 export default function DateNaissance() {
-    const dateDeNaissance = useSignal(new Date());
+    const [date, setDate] = React.useState(new Date());
+    const [, startTransition] = React.useTransition();
     return (
         <FormControl isRequired>
             <FormControlLabel>
@@ -12,8 +13,10 @@ export default function DateNaissance() {
                     Date de naissance
                 </FormControlLabelText>
             </FormControlLabel>
-            <DatePicker onChange={d => {
-                dateDeNaissance.value = d;
+            <DatePicker onChange={(d) => {
+                startTransition(() => {
+                    setDate(d);
+                });
             }} placeholder="Inserer date de naissance" />
             <FormControlHelper>
                 <FormControlHelperText />

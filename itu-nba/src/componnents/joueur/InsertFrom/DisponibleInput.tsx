@@ -1,16 +1,16 @@
-import { CheckIcon, Checkbox, CheckboxIcon, CheckboxIndicator, FormControl, FormControlError, FormControlErrorIcon, FormControlErrorText, FormControlHelper, FormControlHelperText, Text, VStack } from "@gluestack-ui/themed";
+import { CheckIcon, Checkbox, CheckboxIcon, CheckboxIndicator, FormControl, FormControlError, FormControlErrorIcon, FormControlErrorText, FormControlHelper, FormControlHelperText, Text, HStack } from "@gluestack-ui/themed";
 
 export default function DisponibleInput() {
     return (
         <FormControl isRequired>
-            <VStack>
+            <HStack>
                 <Text>Disponibilite : </Text>
-                <Checkbox value={""}>
+                <Checkbox value={""} aria-label="Disponibilite">
                     <CheckboxIndicator>
                         <CheckboxIcon as={CheckIcon} />
                     </CheckboxIndicator>
                 </Checkbox>
-            </VStack>
+            </HStack>
             <FormControlHelper>
                 <FormControlHelperText />
             </FormControlHelper>
