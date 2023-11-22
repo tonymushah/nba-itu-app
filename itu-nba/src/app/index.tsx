@@ -1,7 +1,6 @@
-import SignalCounter from "@componnents/SignalCounter";
-import { Text, View } from "@gluestack-ui/themed";
-import { StatusBar } from "expo-status-bar";
 import InsertFrom from "@componnents/joueur/InsertForm";
+import { View } from "@gluestack-ui/themed";
+import { StatusBar } from "expo-status-bar";
 
 export default function App() {
   return (

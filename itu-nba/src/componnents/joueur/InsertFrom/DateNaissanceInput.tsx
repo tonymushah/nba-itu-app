@@ -1,7 +1,6 @@
-import { FormControl, FormControlError, FormControlErrorIcon, FormControlErrorText, FormControlHelper, FormControlHelperText, FormControlLabel, FormControlLabelText, Input, InputField } from "@gluestack-ui/themed";
-import DatePicker from "../../DatePicker";
-import { useSignal } from "@preact/signals-react";
+import { FormControl, FormControlError, FormControlErrorIcon, FormControlErrorText, FormControlHelper, FormControlHelperText, FormControlLabel, FormControlLabelText } from "@gluestack-ui/themed";
 import React from "react";
+import DatePicker from "../../DatePicker";
 
 export default function DateNaissance() {
     const [date, setDate] = React.useState(new Date());

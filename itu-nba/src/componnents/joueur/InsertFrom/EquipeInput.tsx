@@ -6,7 +6,7 @@ function ChevronDownIcon() {
     if (Platform.OS !== "web") {
         return (
             <FeatherIcons name={"chevron-down"} />
-        )
+        );
     } else {
         return (
             <GlueStackChevronDownIcon />
@@ -35,7 +35,7 @@ function EquipeSelect() {
                 </SelectContent>
             </SelectPortal>
         </Select>
-    )
+    );
 }
 
 export default function EquipeInput() {

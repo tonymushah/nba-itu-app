@@ -1,14 +1,23 @@
-import { Signal, useSignal } from '@preact/signals-react';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import { Platform } from 'react-native';
-import { Pressable, Icon, Input, InputField, InputSlot } from '@gluestack-ui/themed';
-import React, { useState, useTransition } from 'react';
-import { CalendarIcon } from 'lucide-react-native';
+import {
+  Icon,
+  Input,
+  InputField,
+  InputSlot,
+  Pressable,
+} from "@gluestack-ui/themed";
+import DateTimePicker from "@react-native-community/datetimepicker";
+import { CalendarIcon } from "lucide-react-native";
+import React, { useState } from "react";
+import { Platform } from "react-native";
 
-function DefaultDatePicker({ onChange, date = new Date(), show }: {
-  onChange: ((date: Date) => void),
-  date?: Date,
-  show: boolean
+function DefaultDatePicker({
+  onChange,
+  date = new Date(),
+  show,
+}: {
+  onChange: (date: Date) => void;
+  date?: Date;
+  show: boolean;
 }) {
   if (show) {
     return (
@@ -23,41 +32,58 @@ function DefaultDatePicker({ onChange, date = new Date(), show }: {
       />
     );
   } else {
-    return (
-      <React.Fragment />
-    );
+    return <React.Fragment />;
   }
-};
-
-function WebDatePicker({ onChange, date, placeholder }: {
-  onChange: (date: Date) => void,
-  date?: Date,
-  placeholder?: string
-}) {
-  return (
-    <input type="date" placeholder={placeholder} defaultValue={date?.toDateString()} onChange={(event) => {
-      const inputDate = event.currentTarget.valueAsDate;
-      if (inputDate != null) {
-        onChange(inputDate);
-      }
-    }} />
-  )
 }
 
-function NotWebDatePicker({ onChange, placeholder, startDate }: {
-  placeholder?: string,
-  onChange: ((date: Date) => void),
-  startDate?: Date
+function WebDatePicker({
+  onChange,
+  date,
+  placeholder,
+}: {
+  onChange: (date: Date) => void;
+  date?: Date;
+  placeholder?: string;
+}) {
+  return (
+    <input
+      type="date"
+      placeholder={placeholder}
+      defaultValue={date?.toDateString()}
+      onChange={(event) => {
+        const inputDate = event.currentTarget.valueAsDate;
+        if (inputDate != null) {
+          onChange(inputDate);
+        }
+      }}
+    />
+  );
+}
+
+function NotWebDatePicker({
+  onChange,
+  placeholder,
+  startDate,
+}: {
+  placeholder?: string;
+  onChange: (date: Date) => void;
+  startDate?: Date;
 }) {
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
   return (
     <React.Fragment>
-      <Pressable onPress={() => {
-        setShow(true);
-      }}>
+      <Pressable
+        onPress={() => {
+          setShow(true);
+        }}
+      >
         <Input isReadOnly>
-          <InputField type='text' placeholder={placeholder} value={date.toDateString()} />
+          <InputField
+            type="text"
+            placeholder={placeholder}
+            value={date.toDateString()}
+          />
           <InputSlot>
             <Icon as={CalendarIcon} />
           </InputSlot>
@@ -78,18 +104,30 @@ function NotWebDatePicker({ onChange, placeholder, startDate }: {
   );
 }
 
-export default function DatePicker({ onChange, placeholder, startDate }: {
-  placeholder?: string,
-  onChange: ((date: Date) => void),
-  startDate?: Date
+export default function DatePicker({
+  onChange,
+  placeholder,
+  startDate,
+}: {
+  placeholder?: string;
+  onChange: (date: Date) => void;
+  startDate?: Date;
 }) {
   if (Platform.OS !== "web") {
     return (
-      <NotWebDatePicker onChange={onChange} placeholder={placeholder} startDate={startDate} />
+      <NotWebDatePicker
+        onChange={onChange}
+        placeholder={placeholder}
+        startDate={startDate}
+      />
     );
   } else {
     return (
-      <WebDatePicker onChange={onChange} placeholder={placeholder} date={startDate} />
+      <WebDatePicker
+        onChange={onChange}
+        placeholder={placeholder}
+        date={startDate}
+      />
     );
   }
 }

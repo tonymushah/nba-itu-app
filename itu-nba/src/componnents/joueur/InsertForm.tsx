@@ -1,10 +1,11 @@
 import { Box, Center, Text } from "@gluestack-ui/themed";
+
+import DateNaissance from "./InsertFrom/DateNaissanceInput";
+import DisponibleInput from "./InsertFrom/DisponibleInput";
+import EquipeInput from "./InsertFrom/EquipeInput";
+import GenreInput from "./InsertFrom/Genre";
 import NomInput from "./InsertFrom/NomInput";
 import PrenomInput from "./InsertFrom/PrenomInput";
-import DateNaissance from "./InsertFrom/DateNaissanceInput";
-import GenreInput from "./InsertFrom/Genre";
-import EquipeInput from "./InsertFrom/EquipeInput";
-import DisponibleInput from "./InsertFrom/DisponibleInput";
 
 export default function InsertFrom() {
     return (
